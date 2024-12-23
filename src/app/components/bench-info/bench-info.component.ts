@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-bench-info',
-  imports: [],
+    imports: [
+        RouterLink
+    ],
   templateUrl: './bench-info.component.html',
   styleUrl: './bench-info.component.css'
 })
