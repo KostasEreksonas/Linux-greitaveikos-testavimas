@@ -11,10 +11,25 @@ import {ResultsPiComponent} from './components/results-pi/results-pi.component';
 import {ResultsPowerComponent} from './components/results-power/results-power.component';
 import {ResultsMlpComponent} from './components/results-mlp/results-mlp.component';
 import {ResultsOpensslComponent} from './components/results-openssl/results-openssl.component';
+import {UploadResultComponent} from './components/upload-result/upload-result.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, AboutComponent, BenchInfoComponent, NavigationComponent, LoginFormComponent, RegistrationFormComponent, ResultsFfmpegComponent, ResultsFibonacciComponent, ResultsPiComponent, ResultsPowerComponent, ResultsMlpComponent, ResultsOpensslComponent],
+  imports: [
+    RouterOutlet,
+    AboutComponent,
+    BenchInfoComponent,
+    NavigationComponent,
+    LoginFormComponent,
+    RegistrationFormComponent,
+    ResultsFfmpegComponent,
+    ResultsFibonacciComponent,
+    ResultsPiComponent,
+    ResultsPowerComponent,
+    ResultsMlpComponent,
+    ResultsOpensslComponent,
+    UploadResultComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
