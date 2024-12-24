@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BenchResultsComponent } from './bench-results.component';
+import { ResultsMlpComponent } from './results-mlp.component';
 
-describe('BenchResultsComponent', () => {
-  let component: BenchResultsComponent;
-  let fixture: ComponentFixture<BenchResultsComponent>;
+describe('ResultsMlpComponent', () => {
+  let component: ResultsMlpComponent;
+  let fixture: ComponentFixture<ResultsMlpComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BenchResultsComponent]
+      imports: [ResultsMlpComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BenchResultsComponent);
+    fixture = TestBed.createComponent(ResultsMlpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,12 +2,24 @@ import { Routes } from '@angular/router';
 import {AboutComponent} from './components/about/about.component';
 import {BenchInfoComponent} from './components/bench-info/bench-info.component';
 import {LoginFormComponent} from './components/login-form/login-form.component';
-import {BenchResultsComponent} from './components/bench-results/bench-results.component';
+import {RegistrationFormComponent} from './components/registration-form/registration-form.component';
+import {ResultsFfmpegComponent} from './components/results-ffmpeg/results-ffmpeg.component';
+import {ResultsFibonacciComponent} from './components/results-fibonacci/results-fibonacci.component';
+import {ResultsPiComponent} from './components/results-pi/results-pi.component';
+import {ResultsOpensslComponent} from './components/results-openssl/results-openssl.component';
+import {ResultsMlpComponent} from './components/results-mlp/results-mlp.component';
+import {ResultsPowerComponent} from './components/results-power/results-power.component';
 
 export const routes: Routes = [
   {path:"", component:AboutComponent},
   {path:"about", component:AboutComponent},
   {path:"benchmarks", component:BenchInfoComponent},
-  {path:"results", component:BenchResultsComponent},
-  {path:"login", component:LoginFormComponent}
+  {path:"login", component:LoginFormComponent},
+  {path:"register", component:RegistrationFormComponent},
+  {path:"benchmarks/ffmpeg", component:ResultsFfmpegComponent},
+  {path:"benchmarks/fibonacci", component:ResultsFibonacciComponent},
+  {path:"benchmarks/pi", component:ResultsPiComponent},
+  {path:"benchmarks/openssl", component:ResultsOpensslComponent},
+  {path:"benchmarks/power", component:ResultsPowerComponent},
+  {path:"benchmarks/mlp", component:ResultsMlpComponent}
 ];
