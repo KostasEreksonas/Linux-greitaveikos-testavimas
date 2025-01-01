@@ -7,7 +7,7 @@
           Custom Linux greitaveikos testai, skirti greitaveikos palyginimui tarp Linux kompiuterinių sistemų.
         </p>
         <p class="mb-3">
-          <a class="btn btn-primary m-2" routerLink="/results">Rezultatai</a>
+          <a class="btn btn-primary m-2" routerLink="/benchmarks">Testai</a>
           <a class="btn btn-secondary m-2" routerLink="/about">Pagrindinis</a>
         </p>
       </div>
@@ -16,7 +16,6 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row">
         <div class="col-md-4" style="height: 600px;">
           <div class="card mb-4 box-shadow">
@@ -29,7 +28,7 @@
               <div class="d-flex justify-content-center mb-3">
                 <a class="btn btn-primary m-2" routerLink="/benchmarks/ffmpeg">Rezultatai</a>
                 <router-outlet></router-outlet>
-                <a class="btn btn-secondary m-2" routerLink="/benchmarks">Parsisiųsti</a>
+                <a class="btn btn-secondary m-2" (click)="openDialog()">Parsisiųsti</a>
               </div>
             </div>
           </div>
@@ -44,7 +43,7 @@
                 natus neque perspiciatis?</p>
               <div class="d-flex justify-content-center mb-3">
                 <a class="btn btn-primary m-2" routerLink="/benchmarks/fibonacci">Rezultatai</a>
-                <a class="btn btn-secondary m-2" routerLink="/benchmarks">Parsisiųsti</a>
+                <a class="btn btn-secondary m-2" (click)="openDialog()">Parsisiųsti</a>
               </div>
             </div>
           </div>
@@ -59,7 +58,7 @@
                 natus neque perspiciatis?</p>
               <div class="d-flex justify-content-center mb-3">
                 <a class="btn btn-primary m-2" routerLink="/benchmarks/pi">Rezultatai</a>
-                <a class="btn btn-secondary m-2" routerLink="/benchmarks">Parsisiųsti</a>
+                <a class="btn btn-secondary m-2" (click)="openDialog()">Parsisiųsti</a>
               </div>
             </div>
           </div>
@@ -75,7 +74,7 @@
                 natus neque perspiciatis?</p>
               <div class="d-flex justify-content-center mb-3">
                 <a class="btn btn-primary m-2" routerLink="/benchmarks/openssl">Rezultatai</a>
-                <a class="btn btn-secondary m-2" routerLink="/benchmarks">Parsisiųsti</a>
+                <a class="btn btn-secondary m-2" (click)="openDialog()">Parsisiųsti</a>
               </div>
             </div>
           </div>
@@ -90,7 +89,7 @@
                 natus neque perspiciatis?</p>
               <div class="d-flex justify-content-center mb-3">
                 <a class="btn btn-primary m-2" routerLink="/benchmarks/power">Rezultatai</a>
-                <a class="btn btn-secondary m-2" routerLink="/benchmarks">Parsisiųsti</a>
+                <a class="btn btn-secondary m-2" (click)="openDialog()">Parsisiųsti</a>
               </div>
             </div>
           </div>
@@ -105,12 +104,11 @@
                 natus neque perspiciatis?</p>
               <div class="d-flex justify-content-center mb-3">
                 <a class="btn btn-primary m-2" routerLink="/benchmarks/mlp">Rezultatai</a>
-                <a class="btn btn-secondary m-2" routerLink="/benchmarks">Parsisiųsti</a>
+                <a class="btn btn-secondary m-2" (click)="openDialog()">Parsisiųsti</a>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
