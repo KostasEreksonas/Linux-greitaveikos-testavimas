@@ -1,1 +1,65 @@
-<p>results-fibonacci works!</p>
+<div class="card mt-5">
+  <div class="card-header text-center">{{ title }} Rezultatai</div>
+  <div class="card-body">
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>
+          Testas
+        </th>
+        <th>
+          Tipas
+        </th>
+        <th>
+          Modelis
+        </th>
+        <th>
+          Dažnis
+        </th>
+        <th>
+          Vidurkis (sec.)
+        </th>
+        <th>
+          Greičiausias (sec.)
+        </th>
+        <th style="width: 250px;">
+          Veiksmai
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bench of benches; let i=index">
+        <td>
+          {{ bench.name }}
+        </td>
+        <td>
+          {{ bench.type }}
+        </td>
+        <td>
+          {{ bench.model }}
+        </td>
+        <td>
+          {{ bench.frequency }}
+        </td>
+        <td>
+          {{ bench.average }}
+        </td>
+        <td>
+          {{ bench.fastest }}
+        </td>
+        <td>
+          <a  class="btn btn-success me-3" [routerLink]="['/benchmark', bench.id]">Redaguoti</a>
+          <button class="btn btn-danger" (click)="deleteResult(bench.id)">Ištrinti</button>
+        </td>
+
+      </tr>
+      </tbody>
+
+    </table>
+
+
+
+  </div>
+
+</div>
