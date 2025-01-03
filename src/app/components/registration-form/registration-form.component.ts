@@ -19,7 +19,7 @@ export class RegistrationFormComponent {
 
   public register() {
     if (this.email != null && this.password != null) {
-      this.auth.register(this.email, this.password)
+      this.auth.register(this.email, this.password);
     }
   }
 }

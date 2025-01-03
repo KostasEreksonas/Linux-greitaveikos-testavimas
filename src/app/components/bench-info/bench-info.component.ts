@@ -15,7 +15,7 @@ import {BenchNameService} from '../../services/bench-name.service';
 })
 export class BenchInfoComponent {
   public b1 = "ffmpeg";
-  public b2 = "fibonnaci";
+  public b2 = "fibonacci";
   public b3 = "pi";
   public b4 = "openssl";
   public b5 = "power";

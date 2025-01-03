@@ -8,11 +8,12 @@ import { tap } from 'rxjs';
 })
 export class AuthService {
 
-  public idToken:string|null=null;
+  public idToken:string = "";
+
   constructor(private http:HttpClient) { }
 
   public register(email:string, password:string){
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[Token]', {
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCwO8IwacXBrhatWMA_CiMEy-c0ZXchKJk', {
       email:email,
       password:password,
       returnSecureToken:true
@@ -20,7 +21,7 @@ export class AuthService {
   }
 
   public login(email:string, password:string){
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[Token]', {
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCwO8IwacXBrhatWMA_CiMEy-c0ZXchKJk', {
       email:email,
       password:password,
       returnSecureToken:true

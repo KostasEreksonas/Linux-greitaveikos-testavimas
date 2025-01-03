@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 
@@ -14,14 +14,14 @@ export class LoginFormComponent {
   public email:string|null=null;
   public password:string|null=null;
 
-  public constructor(private auth:AuthService){
+  public constructor(private auth:AuthService, private router:Router){
 
   }
 
   public login() {
     if (this.email != null && this.password != null) {
       this.auth.login(this.email, this.password).subscribe((data)=>{
-        console.log(data.idToken);
+        this.router.navigate(['benchmarks']);
       });
     }
   }
