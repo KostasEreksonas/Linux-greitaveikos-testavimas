@@ -21,7 +21,9 @@ export class LoginFormComponent {
   public login() {
     if (this.email != null && this.password != null) {
       this.auth.login(this.email, this.password).subscribe((data)=>{
-        this.router.navigate(['benchmarks']);
+        this.router.navigate(['benchmarks']).then(()=>{
+          window.location.reload();
+        });
       });
     }
   }

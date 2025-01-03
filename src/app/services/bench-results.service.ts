@@ -10,13 +10,21 @@ import {AuthService} from './auth.service';
 export class BenchResultsService {
 
   private benches:Bench[] = [];
+  public idToken:string = "";
 
   constructor(private http:HttpClient, private auth:AuthService) { }
+
+  public assignToken(){
+    this.auth.getToken().subscribe((data)=>{
+      this.idToken = data;
+    })
+    return this.idToken;
+  }
 
   public addResult(item:Bench) {
     return this.http.post("https://linuxbench-c1ed9-default-rtdb.europe-west1.firebasedatabase.app/results.json", item, {
       params:{
-        "auth":this.auth.idToken
+        "auth":this.assignToken()
       }
     })
   }
@@ -25,7 +33,7 @@ export class BenchResultsService {
     return this.http
       .get<{[key:string]:Bench}>("https://linuxbench-c1ed9-default-rtdb.europe-west1.firebasedatabase.app/results.json", {
         params:{
-          "auth":this.auth.idToken
+          "auth":this.assignToken()
         }
       })
       .pipe(
@@ -46,14 +54,14 @@ export class BenchResultsService {
   public loadResult(id:string){
     return this.http.get<Bench>("https://linuxbench-c1ed9-default-rtdb.europe-west1.firebasedatabase.app/results/"+id+".json", {
       params:{
-        "auth":this.auth.idToken
+        "auth":this.assignToken()
       }
     });
   }
   public updateRecord(item:Bench){
     return this.http.patch("https://linuxbench-c1ed9-default-rtdb.europe-west1.firebasedatabase.app/results/"+item.id+".json", item, {
       params:{
-        "auth":this.auth.idToken
+        "auth":this.assignToken()
       }
     });
   }
@@ -61,7 +69,7 @@ export class BenchResultsService {
   public deleteResult(id:string){
     return this.http.delete("https://linuxbench-c1ed9-default-rtdb.europe-west1.firebasedatabase.app/results/"+id+".json", {
       params:{
-        "auth":this.auth.idToken
+        "auth":this.assignToken()
       }
     });
   }
