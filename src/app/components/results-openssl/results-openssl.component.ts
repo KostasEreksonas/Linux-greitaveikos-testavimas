@@ -3,12 +3,14 @@ import {CommonModule} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {Bench} from '../../models/bench';
 import {BenchResultsService} from '../../services/bench-results.service';
+import {LoadingComponent} from '../loading/loading.component';
 
 @Component({
   selector: 'app-results-openssl',
   imports: [
     CommonModule,
-    RouterLink
+    RouterLink,
+    LoadingComponent
   ],
   templateUrl: './results-openssl.component.html',
   styleUrl: './results-openssl.component.css'
@@ -17,11 +19,20 @@ export class ResultsOpensslComponent {
   public title="OPENSSL";
 
   public benches:Bench[] = [];
+  public isLoading = false;
+  public isError = false;
 
   private loadData(){
+    this.isLoading = true;
     this.benchService.loadResults().subscribe({
       next:(data)=>{
         this.benches=data.filter(x => x.name === "openssl");
+        this.isLoading = false;
+        this.isError = false;
+      },
+      error:(data)=>{
+        this.isError = true;
+        this.isLoading = false;
       }
     })
   }
