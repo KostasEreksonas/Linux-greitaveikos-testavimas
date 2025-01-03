@@ -14,7 +14,11 @@ export class BenchResultsService {
   constructor(private http:HttpClient, private auth:AuthService) { }
 
   public addResult(item:Bench) {
-    return this.http.post("https://linuxbench-c1ed9-default-rtdb.europe-west1.firebasedatabase.app/results.json", item)
+    return this.http.post("https://linuxbench-c1ed9-default-rtdb.europe-west1.firebasedatabase.app/results.json", item, {
+      params:{
+        "auth":this.auth.idToken
+      }
+    })
   }
 
   public loadResults(){

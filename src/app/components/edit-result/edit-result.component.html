@@ -1,40 +1,90 @@
 <section class="bg-light p-3 p-md-4 p-xl-5">
-  <div class="card mt-5">
-    <div class="card-header text-center">Atnaujinti esamą rezultatą</div>
-    <div class="mb-3">
-      <label for="bench_name" class="form-label p-2">Pasirinkite testą</label>
-      <select name="bench_name" id="bench_name" class="form-control" [(ngModel)]="bench_name">
-        <option value="ffmpeg">FFMPEG</option>
-        <option value="fibonacci">FIBONACCI</option>
-        <option value="pi" >PI</option>
-        <option value="openssl">OPENSSL</option>
-        <option value="power">POWER</option>
-        <option value="mlpnn" >MLP-NN</option>
-      </select>
+  <form (ngSubmit)="updateRecord(f)" #f="ngForm">
+    <div class="card mt-5">
+      <div class="card-header text-center">Atnaujinti rezultatą</div>
+      <div class="mb-3">
+        <label for="bench_name" class="form-label p-2">Pasirinkite testą</label>
+        <select name="bench_name" id="bench_name" class="form-control" [(ngModel)]="bench_name" required>
+          <option value="ffmpeg">FFMPEG</option>
+          <option value="fibonacci">FIBONACCI</option>
+          <option value="pi" >PI</option>
+          <option value="openssl">OPENSSL</option>
+          <option value="power">POWER</option>
+          <option value="mlpnn" >MLP-NN</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="bench-type" class="form-label p-2">Pasirinkite tipą</label>
+        <select name="bench-type" id="bench-type" class="form-control" [(ngModel)]="bench_type" required>
+          <option value="cpu">CPU</option>
+          <option value="gpu">GPU</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="model" class="form-label p-2">Modelis</label>
+        <input
+          type="text"
+          name="model"
+          id="model"
+          class="form-control"
+          [class.is-invalid]="!inputModel.valid"
+          [(ngModel)]="model"
+          required
+          minlength="5"
+          maxlength="64"
+          #inputModel="ngModel"
+        >
+        <div class="helper-block">"Nuo 5 iki 64 simbolių"</div>
+      </div>
+      <div class="mb-3">
+        <label for="frequency" class="form-label p-2">Dažnis</label>
+        <input
+          type="text"
+          name="frequency"
+          id="frequency"
+          class="form-control"
+          [class.is-invalid]="!inputFrequency.valid"
+          [(ngModel)]="frequency"
+          required
+          minlength="8"
+          maxlength="8"
+          #inputFrequency="ngModel"
+        >
+        <div class="helper-block" *ngIf="!inputAverage.valid">"Formatas: X.xx GHz"</div>
+      </div>
+      <div class="mb-3">
+        <label for="average" class="form-label p-2">Vidurkis</label>
+        <input
+          type="text"
+          name="average"
+          id="average"
+          class="form-control"
+          [class.is-invalid]="!inputAverage.valid"
+          [(ngModel)]="average"
+          required
+          minlength="4"
+          maxlength="16"
+          #inputAverage="ngModel"
+        >
+        <div class="helper-block" *ngIf="!inputAverage.valid">"Formatas: X.xx"</div>
+      </div>
+      <div class="mb-3">
+        <label for="fastest" class="form-label p-2">Geriausias rezultatas</label>
+        <input
+          type="text"
+          name="fastest"
+          id="fastest"
+          class="form-control"
+          [class.is-invalid]="!inputFastest.valid"
+          [(ngModel)]="fastest"
+          required
+          minlength="4"
+          maxlength="16"
+          #inputFastest="ngModel"
+        >
+        <div class="helper-block" *ngIf="!inputFastest.valid">"Formatas: X.xx"</div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!f.valid">Atnaujinti</button>
     </div>
-    <div class="mb-3">
-      <label for="bench-type" class="form-label p-2">Pasirinkite tipą</label>
-      <select name="bench-type" id="bench-type" class="form-control" [(ngModel)]="bench_type">
-        <option value="cpu">CPU</option>
-        <option value="gpu">GPU</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="model" class="form-label p-2">Modelis</label>
-      <input type="text" name="model" id="model" class="form-control" [(ngModel)]="model">
-    </div>
-    <div class="mb-3">
-      <label for="frequency" class="form-label p-2">Dažnis</label>
-      <input type="text" name="frequency" id="frequency" class="form-control" [(ngModel)]="frequency">
-    </div>
-    <div class="mb-3">
-      <label for="average" class="form-label p-2">Vidurkis</label>
-      <input type="text" name="average" id="average" class="form-control" [(ngModel)]="average">
-    </div>
-    <div class="mb-3">
-      <label for="fastest" class="form-label p-2">Geriausias rezultatas</label>
-      <input type="text" name="fastest" id="fastest" class="form-control" [(ngModel)]="fastest">
-    </div>
-    <button class="btn btn-success" (click)="updateRecord()">Atnaujinti</button>
-  </div>
+  </form>
 </section>
