@@ -27,14 +27,14 @@
           name="model"
           id="model"
           class="form-control"
-          [class.is-invalid]="!inputModel.valid"
+          [class.is-invalid]="!inputModel.valid && inputModel.touched"
           [(ngModel)]="model"
           required
           minlength="5"
           maxlength="64"
           #inputModel="ngModel"
         >
-        <div class="helper-block">"Nuo 5 iki 64 simbolių"</div>
+        <div class="helper-block" *ngIf="!inputModel.valid && inputModel.touched">"Nuo 5 iki 64 simbolių"</div>
       </div>
       <div class="mb-3">
         <label for="frequency" class="form-label p-2">Dažnis</label>
@@ -43,14 +43,14 @@
           name="frequency"
           id="frequency"
           class="form-control"
-          [class.is-invalid]="!inputFrequency.valid"
+          [class.is-invalid]="!inputFrequency.valid && inputFrequency.touched"
           [(ngModel)]="frequency"
           required
           minlength="8"
           maxlength="8"
           #inputFrequency="ngModel"
         >
-        <div class="helper-block" *ngIf="!inputAverage.valid">"Formatas: X.xx GHz"</div>
+        <div class="helper-block" *ngIf="!inputFrequency.valid && inputFrequency.touched">"Formatas: X.xx GHz"</div>
       </div>
       <div class="mb-3">
         <label for="average" class="form-label p-2">Vidurkis</label>
@@ -59,14 +59,14 @@
           name="average"
           id="average"
           class="form-control"
-          [class.is-invalid]="!inputAverage.valid"
+          [class.is-invalid]="!inputAverage.valid && inputAverage.touched"
           [(ngModel)]="average"
           required
           minlength="4"
           maxlength="16"
           #inputAverage="ngModel"
         >
-        <div class="helper-block" *ngIf="!inputAverage.valid">"Formatas: X.xx"</div>
+        <div class="helper-block" *ngIf="!inputAverage.valid && inputAverage.touched">"Formatas: X.xx"</div>
       </div>
       <div class="mb-3">
         <label for="fastest" class="form-label p-2">Geriausias rezultatas</label>
@@ -75,14 +75,14 @@
           name="fastest"
           id="fastest"
           class="form-control"
-          [class.is-invalid]="!inputFastest.valid"
+          [class.is-invalid]="!inputFastest.valid && inputFastest.touched"
           [(ngModel)]="fastest"
           required
           minlength="4"
           maxlength="16"
           #inputFastest="ngModel"
         >
-        <div class="helper-block" *ngIf="!inputFastest.valid">"Formatas: X.xx"</div>
+        <div class="helper-block" *ngIf="!inputFastest.valid && inputFastest.touched">"Formatas: X.xx"</div>
       </div>
       <button type="submit" class="btn btn-success" [disabled]="!f.valid">Pridėti</button>
     </div>

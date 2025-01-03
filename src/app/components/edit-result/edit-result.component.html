@@ -34,7 +34,7 @@
           maxlength="64"
           #inputModel="ngModel"
         >
-        <div class="helper-block">"Nuo 5 iki 64 simbolių"</div>
+        <div class="helper-block" *ngIf="!inputModel.valid">"Nuo 5 iki 64 simbolių"</div>
       </div>
       <div class="mb-3">
         <label for="frequency" class="form-label p-2">Dažnis</label>
