@@ -14,7 +14,7 @@
                 </div>
               </div>
             </div>
-            <form action="#!">
+            <form (ngSubmit)="login(f)" #f="ngForm">
               <div class="row gy-3 overflow-hidden">
                 <div class="col-12">
                   <div class="form-floating mb-3">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-12">
                   <div class="d-grid">
-                    <button class="btn bsb-btn-xl btn-primary" type="submit" (click)="login()">Prisijungti</button>
+                    <button type="submit" class="btn bsb-btn-xl btn-primary" type="submit">Prisijungti</button>
                   </div>
                 </div>
               </div>

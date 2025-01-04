@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, NgForm} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
@@ -19,15 +19,13 @@ export class LoginFormComponent {
 
   }
 
-  public login() {
-    if (this.email != null && this.password != null) {
-      this.auth.login(this.email, this.password).subscribe((data)=>{
-        this.router.navigate(['benchmarks']).then(()=>{
-          window.location.reload();
-        });
-      }, (error)=>{
-        this.message = error;
+  public login(f:NgForm) {
+    this.auth.login(f.form.value.email, f.form.value.password).subscribe((data)=>{
+      this.router.navigate(['benchmarks']).then(()=>{
+        window.location.reload();
       });
-    }
+    }, (error)=>{
+      this.message = error;
+    });
   }
 }

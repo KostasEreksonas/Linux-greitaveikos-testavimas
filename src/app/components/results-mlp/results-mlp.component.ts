@@ -21,6 +21,8 @@ export class ResultsMlpComponent {
   public benches:Bench[] = [];
   public isLoading = false;
   public isError = false;
+  public status = '';
+  public message = '';
 
   private loadData(){
     this.isLoading = true;
@@ -33,6 +35,8 @@ export class ResultsMlpComponent {
       error:(data)=>{
         this.isError = true;
         this.isLoading = false;
+        this.status = data.status;
+        this.message = data.error.error;
       }
     })
   }

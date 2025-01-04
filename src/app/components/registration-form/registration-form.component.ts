@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, NgForm} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
@@ -18,13 +18,11 @@ export class RegistrationFormComponent {
   public constructor(private auth:AuthService, private router:Router) {
   }
 
-  public register() {
-    if (this.email != null && this.password != null) {
-      this.auth.register(this.email, this.password).subscribe((data)=>{
+  public register(f:NgForm) {
+      this.auth.register(f.form.value.email, f.form.value.password).subscribe((data)=>{
         this.router.navigate(['login']);
       },(error) => {
         this.message = error;
       });
     }
-  }
 }
