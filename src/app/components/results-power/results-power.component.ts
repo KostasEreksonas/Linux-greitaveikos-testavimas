@@ -28,7 +28,7 @@ export class ResultsPowerComponent {
     this.isLoading = true;
     this.benchService.loadResults().subscribe({
       next:(data)=>{
-        this.benches=data.filter(x => x.name === "power");
+        this.benches=data.filter(x => x.name === "power").sort((a, b) => a.fastest - b.fastest);
         this.isLoading = false;
         this.isError = false;
       },

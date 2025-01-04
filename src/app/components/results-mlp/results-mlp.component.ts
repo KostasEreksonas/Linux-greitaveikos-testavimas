@@ -28,7 +28,7 @@ export class ResultsMlpComponent {
     this.isLoading = true;
     this.benchService.loadResults().subscribe({
       next:(data)=>{
-        this.benches=data.filter(x => x.name === "mlpnn");
+        this.benches=data.filter(x => x.name === "mlpnn").sort((a, b) => a.fastest - b.fastest);
         this.isLoading = false;
         this.isError = false;
       },

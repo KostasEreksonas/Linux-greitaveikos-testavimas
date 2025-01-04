@@ -28,7 +28,7 @@ export class ResultsFibonacciComponent {
     this.isLoading = true;
     this.benchService.loadResults().subscribe({
       next:(data)=>{
-        this.benches=data.filter(x => x.name === "fibonacci");
+        this.benches=data.filter(x => x.name === "fibonacci").sort((a, b) => a.fastest - b.fastest);
         this.isLoading = false;
         this.isError = false;
       },

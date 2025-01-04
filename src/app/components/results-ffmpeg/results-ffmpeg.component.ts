@@ -28,7 +28,7 @@ export class ResultsFfmpegComponent {
     this.isLoading = true;
     this.benchService.loadResults().subscribe({
       next:(data)=>{
-        this.benches=data.filter(x => x.name === "ffmpeg");
+        this.benches=data.filter(x => x.name === "ffmpeg").sort((a, b) => a.fastest - b.fastest);
         this.isLoading = false;
         this.isError = false;
       },
