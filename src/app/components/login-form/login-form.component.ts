@@ -13,6 +13,7 @@ import {AuthService} from '../../services/auth.service';
 export class LoginFormComponent {
   public email:string|null=null;
   public password:string|null=null;
+  public message:string = ""
 
   public constructor(private auth:AuthService, private router:Router){
 
@@ -24,6 +25,8 @@ export class LoginFormComponent {
         this.router.navigate(['benchmarks']).then(()=>{
           window.location.reload();
         });
+      }, (error)=>{
+        this.message = error;
       });
     }
   }

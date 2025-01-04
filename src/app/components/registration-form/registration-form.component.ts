@@ -11,8 +11,9 @@ import {AuthService} from '../../services/auth.service';
   styleUrl: './registration-form.component.css'
 })
 export class RegistrationFormComponent {
-  public email: string | null = null;
-  public password: string | null = null;
+  public email:string | null = null;
+  public password:string | null = null;
+  public message:string = ""
 
   public constructor(private auth:AuthService, private router:Router) {
   }
@@ -21,6 +22,8 @@ export class RegistrationFormComponent {
     if (this.email != null && this.password != null) {
       this.auth.register(this.email, this.password).subscribe((data)=>{
         this.router.navigate(['login']);
+      },(error) => {
+        this.message = error;
       });
     }
   }
