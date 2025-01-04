@@ -18,7 +18,7 @@ export const routes: Routes = [
   {path:"benchmarks", component:BenchInfoComponent},
   {path:"login", component:LoginFormComponent},
   {path:"register", component:RegistrationFormComponent},
-  {path:"new", component:UploadResultComponent},
+  {path:"upload", component:UploadResultComponent},
   {path:"benchmarks/ffmpeg", component:ResultsFfmpegComponent},
   {path:"benchmarks/fibonacci", component:ResultsFibonacciComponent},
   {path:"benchmarks/pi", component:ResultsPiComponent},
