@@ -8,9 +8,12 @@ import {catchError, Observable, of, tap, throwError} from 'rxjs';
 })
 export class AuthService {
 
-  public isError = false;
+  public idToken:string|null = "";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    this.idToken = localStorage.getItem('token');
+    console.log(this.idToken);
+  }
 
   private errorHandler(error:HttpErrorResponse){
     if (error.status === 0) {
@@ -38,10 +41,6 @@ export class AuthService {
     }).pipe(catchError(this.errorHandler), tap((response)=>{
       localStorage.setItem('token', response.idToken);
     }));
-  }
-
-  public getToken():Observable<string>{
-    return of(localStorage.getItem('token')!);
   }
 
   public deleteToken():Observable<void>{

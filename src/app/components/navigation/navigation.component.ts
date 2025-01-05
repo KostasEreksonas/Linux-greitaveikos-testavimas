@@ -10,12 +10,13 @@ import {CommonModule} from '@angular/common';
   styleUrl: './navigation.component.css'
 })
 export class NavigationComponent {
-  public token:string = "";
+  public idToken:string = "";
 
   constructor(private auth:AuthService, private router:Router) {
-    this.auth.getToken().subscribe((data)=>{
-      this.token = data;
-    });
+    let tmp = localStorage.getItem('token');
+    if (tmp != null) {
+      this.idToken = tmp;
+    }
   }
 
   public deleteToken(){
