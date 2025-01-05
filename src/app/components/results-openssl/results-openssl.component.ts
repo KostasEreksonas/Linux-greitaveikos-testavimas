@@ -28,7 +28,7 @@ export class ResultsOpensslComponent {
     this.isLoading = true;
     this.benchService.loadResults().subscribe({
       next:(data)=>{
-        this.benches=data.filter(x => x.name === "openssl").sort((a, b) => a.fastest - b.fastest);
+        this.benches=data.filter(x => x.name === "openssl").sort((a, b) => b.fastest - a.fastest);
         this.isLoading = false;
         this.isError = false;
       },
