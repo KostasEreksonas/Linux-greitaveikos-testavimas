@@ -9,10 +9,11 @@ import {catchError, Observable, of, tap, throwError} from 'rxjs';
 export class AuthService {
 
   public idToken:string|null = "";
+  public email:string|null = "";
 
   constructor(private http:HttpClient) {
     this.idToken = localStorage.getItem('token');
-    console.log(this.idToken);
+    this.email = localStorage.getItem('email');
   }
 
   private errorHandler(error:HttpErrorResponse){
@@ -40,11 +41,13 @@ export class AuthService {
       returnSecureToken:true
     }).pipe(catchError(this.errorHandler), tap((response)=>{
       localStorage.setItem('token', response.idToken);
+      localStorage.setItem('email', response.email);
     }));
   }
 
   public deleteToken():Observable<void>{
     localStorage.removeItem('token');
+    localStorage.removeItem('email');
     return of();
   }
 }

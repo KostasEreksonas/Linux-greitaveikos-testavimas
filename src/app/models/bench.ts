@@ -1,4 +1,5 @@
 export interface Bench {
+  email:string,
   name:string,
   type:string,
   model:string,

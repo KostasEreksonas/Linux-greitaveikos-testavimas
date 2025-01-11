@@ -11,6 +11,7 @@ import {ResultsOpensslComponent} from './components/results-openssl/results-open
 import {ResultsMlpComponent} from './components/results-mlp/results-mlp.component';
 import {ResultsPowerComponent} from './components/results-power/results-power.component';
 import {EditResultComponent} from './components/edit-result/edit-result.component';
+import {ProfileComponent} from './components/profile/profile.component';
 
 export const routes: Routes = [
   {path:"", component:AboutComponent},
@@ -19,6 +20,7 @@ export const routes: Routes = [
   {path:"login", component:LoginFormComponent},
   {path:"register", component:RegistrationFormComponent},
   {path:"upload", component:UploadResultComponent},
+  {path:"profile", component:ProfileComponent},
   {path:"benchmarks/ffmpeg", component:ResultsFfmpegComponent},
   {path:"benchmarks/fibonacci", component:ResultsFibonacciComponent},
   {path:"benchmarks/pi", component:ResultsPiComponent},

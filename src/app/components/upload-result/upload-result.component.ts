@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 })
 export class UploadResultComponent {
 
+  public email:string = "";
   public bench_name:string|null = "";
   public bench_type:string|null = "";
   public model:string|null = "";
@@ -21,12 +22,15 @@ export class UploadResultComponent {
   public fastest:number|null = null;
 
   constructor(private benchService:BenchResultsService, private router:Router) {
-
+    let temp = localStorage.getItem('email');
+    if (temp != null) {
+      this.email = temp;
+    }
   }
 
   public addNewResult(f:NgForm){
-    console.log(f.form.value);
     const tmp:Bench={
+      email:this.email,
       name:f.form.value.bench_name,
       type:f.form.value.bench_type,
       model:f.form.value.model,

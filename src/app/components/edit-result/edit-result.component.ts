@@ -12,6 +12,7 @@ import {FormsModule, NgForm} from '@angular/forms';
 })
 export class EditResultComponent {
   public id:string;
+  public email:string = "";
   public bench_name:string|null = "";
   public bench_type:string|null = "";
   public model:string|null = "";
@@ -22,6 +23,7 @@ export class EditResultComponent {
   constructor(private route:ActivatedRoute, private router:Router, private benchService:BenchResultsService) {
     this.id = this.route.snapshot.params["id"];
     this.benchService.loadResult(this.id).subscribe( (bench)=>{
+      this.email = bench.email;
       this.bench_name = bench.name;
       this.bench_type = bench.type;
       this.model = bench.model;
@@ -34,6 +36,7 @@ export class EditResultComponent {
   public updateRecord(f:NgForm){
     this.benchService.updateRecord({
       id:this.id,
+      email:this.email,
       name:f.form.value.bench_name,
       type:f.form.value.bench_type,
       model:f.form.value.model,
