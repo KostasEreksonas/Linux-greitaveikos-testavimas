@@ -4,13 +4,15 @@ import {RouterLink} from '@angular/router';
 import {Bench} from '../../models/bench';
 import {BenchResultsService} from '../../services/bench-results.service';
 import {LoadingComponent} from '../loading/loading.component';
+import {FooterComponent} from '../footer/footer.component';
 
 @Component({
   selector: 'app-results-openssl',
   imports: [
     CommonModule,
     RouterLink,
-    LoadingComponent
+    LoadingComponent,
+    FooterComponent
   ],
   templateUrl: './results-openssl.component.html',
   styleUrl: './results-openssl.component.css'
@@ -29,6 +31,8 @@ export class ResultsOpensslComponent {
     this.benchService.loadResults().subscribe({
       next:(data)=>{
         this.benches=data.filter(x => x.name === "openssl").sort((a, b) => b.fastest - a.fastest);
+        this.benchService.filtered = this.benches;
+        this.benchService.onResultCountChange.emit();
         this.isLoading = false;
         this.isError = false;
       },

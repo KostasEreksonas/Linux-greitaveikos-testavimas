@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {Bench} from '../../models/bench';
 import {BenchResultsService} from '../../services/bench-results.service';
 import {RouterLink} from '@angular/router';
+import {FooterComponent} from '../footer/footer.component';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,8 @@ import {RouterLink} from '@angular/router';
     ReactiveFormsModule,
     LoadingComponent,
     CommonModule,
-    RouterLink
+    RouterLink,
+    FooterComponent
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
@@ -31,6 +33,8 @@ export class ProfileComponent {
     this.benchService.loadResults().subscribe({
       next:(data)=>{
         this.benches=data.filter(x => x.email === this.email).sort((a, b) => a.fastest - b.fastest);
+        this.benchService.filtered = this.benches;
+        this.benchService.onResultCountChange.emit();
         this.isLoading = false;
         this.isError = false;
       },

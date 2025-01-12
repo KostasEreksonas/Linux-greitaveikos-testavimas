@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Bench} from '../models/bench';
 import {map, tap} from 'rxjs';
@@ -10,6 +10,8 @@ import {AuthService} from './auth.service';
 export class BenchResultsService {
 
   private benches:Bench[] = [];
+  public filtered:Bench[] = [];
+  public onResultCountChange = new EventEmitter();
   public idToken:string = "";
 
   constructor(private http:HttpClient, private auth:AuthService) {
@@ -45,6 +47,7 @@ export class BenchResultsService {
         }),
         tap((data)=>{
           this.benches=data;
+          this.onResultCountChange.emit();
         })
       )
   }
@@ -70,5 +73,9 @@ export class BenchResultsService {
         "auth":this.idToken
       }
     });
+  }
+
+  public resultsCount(){
+    return this.filtered.length;
   }
 }

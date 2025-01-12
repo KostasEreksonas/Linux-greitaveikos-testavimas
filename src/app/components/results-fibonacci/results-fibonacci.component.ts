@@ -4,13 +4,15 @@ import {Bench} from '../../models/bench';
 import {BenchResultsService} from '../../services/bench-results.service';
 import {RouterLink} from '@angular/router';
 import {LoadingComponent} from "../loading/loading.component";
+import {FooterComponent} from '../footer/footer.component';
 
 @Component({
   selector: 'app-results-fibonacci',
     imports: [
         CommonModule,
         RouterLink,
-        LoadingComponent
+        LoadingComponent,
+        FooterComponent
     ],
   templateUrl: './results-fibonacci.component.html',
   styleUrl: './results-fibonacci.component.css'
@@ -29,6 +31,8 @@ export class ResultsFibonacciComponent {
     this.benchService.loadResults().subscribe({
       next:(data)=>{
         this.benches=data.filter(x => x.name === "fibonacci").sort((a, b) => a.fastest - b.fastest);
+        this.benchService.filtered = this.benches;
+        this.benchService.onResultCountChange.emit();
         this.isLoading = false;
         this.isError = false;
       },

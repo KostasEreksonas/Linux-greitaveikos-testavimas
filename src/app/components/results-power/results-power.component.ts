@@ -4,13 +4,15 @@ import {RouterLink} from '@angular/router';
 import {Bench} from '../../models/bench';
 import {BenchResultsService} from '../../services/bench-results.service';
 import {LoadingComponent} from '../loading/loading.component';
+import {FooterComponent} from '../footer/footer.component';
 
 @Component({
   selector: 'app-results-power',
   imports: [
     CommonModule,
     RouterLink,
-    LoadingComponent
+    LoadingComponent,
+    FooterComponent
   ],
   templateUrl: './results-power.component.html',
   styleUrl: './results-power.component.css'
@@ -29,6 +31,8 @@ export class ResultsPowerComponent {
     this.benchService.loadResults().subscribe({
       next:(data)=>{
         this.benches=data.filter(x => x.name === "power").sort((a, b) => a.fastest - b.fastest);
+        this.benchService.filtered = this.benches;
+        this.benchService.onResultCountChange.emit();
         this.isLoading = false;
         this.isError = false;
       },

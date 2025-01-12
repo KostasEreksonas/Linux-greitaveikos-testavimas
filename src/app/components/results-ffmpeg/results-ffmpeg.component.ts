@@ -4,13 +4,15 @@ import {Bench} from '../../models/bench';
 import {CommonModule} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {LoadingComponent} from '../loading/loading.component';
+import {FooterComponent} from '../footer/footer.component';
 
 @Component({
   selector: 'app-results-ffmpeg',
   imports: [
     CommonModule,
     RouterLink,
-    LoadingComponent
+    LoadingComponent,
+    FooterComponent
   ],
   templateUrl: './results-ffmpeg.component.html',
   styleUrl: './results-ffmpeg.component.css'
@@ -28,7 +30,9 @@ export class ResultsFfmpegComponent {
     this.isLoading = true;
     this.benchService.loadResults().subscribe({
       next:(data)=>{
-        this.benches=data.filter(x => x.name === "ffmpeg").sort((a, b) => a.fastest - b.fastest);
+        this.benches = data.filter(x => x.name === "ffmpeg").sort((a, b) => a.fastest - b.fastest);
+        this.benchService.filtered = this.benches;
+        this.benchService.onResultCountChange.emit();
         this.isLoading = false;
         this.isError = false;
       },
