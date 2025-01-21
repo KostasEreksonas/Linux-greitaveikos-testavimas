@@ -13,16 +13,21 @@ import {AuthService} from '../../services/auth.service';
 export class RegistrationFormComponent {
   public email:string | null = null;
   public password:string | null = null;
-  public message:string = ""
+  public message:string = "";
+  public isError:boolean = false;
 
   public constructor(private auth:AuthService, private router:Router) {
   }
 
   public register(f:NgForm) {
-      this.auth.register(f.form.value.email, f.form.value.password).subscribe((data)=>{
-        this.router.navigate(['login']);
-      },(error) => {
-        this.message = error;
+      this.auth.register(f.form.value.email, f.form.value.password).subscribe({
+        next:()=>{
+          this.router.navigate(['login']);
+        },
+        error:(error)=>{
+          this.isError = true;
+          this.message = error;
+        }
       });
     }
 }

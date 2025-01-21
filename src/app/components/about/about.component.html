@@ -8,10 +8,11 @@
           Custom Linux greitaveikos testai, skirti greitaveikos palyginimui tarp Linux kompiuterinių sistemų.
         </p>
         <p class="mb-3">
-          <a class="btn btn-primary m-2" routerLink="/register">Registracija</a>
+          <a class="btn btn-light m-2" disabled *ngIf="idToken">Registracija</a>
+          <a class="btn btn-primary m-2" routerLink="/register" *ngIf="!idToken">Registracija</a>
           <a class="btn btn-secondary m-2" routerLink="/benchmarks">Testai</a>
         </p>
-        <a class="link-secondary text-decoration-none" routerLink="/login">Turite paskyrą? Prisijunkite paspaudę čia</a>
+        <a class="link-secondary text-decoration-none" routerLink="/login" *ngIf="!idToken">Turite paskyrą? Prisijunkite paspaudę čia</a>
       </div>
     </div>
   </div>

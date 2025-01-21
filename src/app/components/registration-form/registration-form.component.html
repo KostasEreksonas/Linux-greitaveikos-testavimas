@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-12">
                   <div class="d-grid">
-                    <button type="submit" class="btn bsb-btn-xl btn-primary" type="submit">Registruotis</button>
+                    <button type="submit" class="btn bsb-btn-xl btn-primary" type="submit" [disabled]="!f.valid">Registruotis</button>
                   </div>
                 </div>
               </div>
@@ -66,14 +66,14 @@
                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
                   <a class="link-secondary text-decoration-none" routerLink="/login">Turite paskyrą? Prisijunkite paspaudę čia</a>
                 </div>
+                <div class="alert alert-danger" *ngIf="isError">
+                  {{ message }}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="alert alert-danger">
-    {{ message }}
   </div>
 </section>
